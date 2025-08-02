@@ -89,6 +89,23 @@ class ProductoController extends Controller
     public function update(Request $request, int $id)
     {
         //
+        $request->validate([
+            'nombre'=>'required',
+            'precio'=>'required'
+        ]);
+        
+        $producto=producto::find($id);
+        if(!$producto){
+            return response()->json([
+                'mensaje'=>'no encontrado'
+            ],404);
+        }
+        
+        $producto ->update($request->all());
+        return response()->json([
+            'mensaje'=>'producto modificado',
+            'producto'=>$producto
+        ],201);
     }
 
     /**
