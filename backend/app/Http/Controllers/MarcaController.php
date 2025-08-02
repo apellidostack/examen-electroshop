@@ -37,6 +37,14 @@ class MarcaController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nombre'=>'required',
+        ]);
+        $marca = marca::create($request->all());
+        return response()->json([
+            'mensaje'=>'creado exitosamente',
+            'marca'=>$marca
+        ],200);
     }
 
     /**
