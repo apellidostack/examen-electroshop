@@ -15,6 +15,7 @@ class ProductoController extends Controller
     public function index()
     {
         //
+        return response()->json(producto::all());
     }
 
     /**
