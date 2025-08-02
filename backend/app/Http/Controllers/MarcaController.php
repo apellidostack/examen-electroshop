@@ -56,6 +56,15 @@ class MarcaController extends Controller
     public function show(int $id)
     {
         //
+        $marca=marca::find($id);
+        if(!$marca){
+            return response()->json([
+                'mensaje'=>'no encontrado'
+            ],404);
+        }
+        return response()->json([
+            'marca'=>$marca
+        ],200);
     }
 
     /**
