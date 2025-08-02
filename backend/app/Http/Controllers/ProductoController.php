@@ -57,6 +57,15 @@ class ProductoController extends Controller
     public function show(int $id)
     {
         //
+        $producto=producto::find($id);
+        if(!$producto){
+            return response()->json([
+                'mensaje'=>'no encontrado'
+            ],404);
+        }
+        return response()->json([
+            'producto'=>$producto
+        ],200);
     }
 
     /**
