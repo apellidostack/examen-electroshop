@@ -88,6 +88,22 @@ class MarcaController extends Controller
     public function update(Request $request, int $id)
     {
         //
+        $request->validate([
+            'nombre'=>'required'
+        ]);
+        
+        $marca=marca::find($id);
+        if(!$marca){
+            return response()->json([
+                'mensaje'=>'no encontrado'
+            ],404);
+        }
+        
+        $marca ->update($request->all());
+        return response()->json([
+            'mensaje'=>'marca modificada',
+            'marca'=>$marca
+        ],201);
     }
 
     /**
