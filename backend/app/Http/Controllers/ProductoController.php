@@ -37,6 +37,15 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nombre'=>'required',
+            'precio'=>'required'
+        ]);
+        $producto = producto::create($request->all());
+        return response()->json([
+            'mensaje'=>'creado exitosamente',
+            'producto'=>$producto
+        ],200);
     }
 
     /**
