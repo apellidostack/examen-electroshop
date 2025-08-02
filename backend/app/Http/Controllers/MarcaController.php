@@ -15,6 +15,7 @@ class MarcaController extends Controller
     public function index()
     {
         //
+        return response()->json(marca::all());
     }
 
     /**
@@ -44,7 +45,7 @@ class MarcaController extends Controller
      * @param  \App\Models\marca  $marca
      * @return \Illuminate\Http\Response
      */
-    public function show(marca $marca)
+    public function show(int $id)
     {
         //
     }
@@ -67,7 +68,7 @@ class MarcaController extends Controller
      * @param  \App\Models\marca  $marca
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, marca $marca)
+    public function update(Request $request, int $id)
     {
         //
     }
@@ -78,7 +79,7 @@ class MarcaController extends Controller
      * @param  \App\Models\marca  $marca
      * @return \Illuminate\Http\Response
      */
-    public function destroy(marca $marca)
+    public function destroy(int $id)
     {
         //
     }
